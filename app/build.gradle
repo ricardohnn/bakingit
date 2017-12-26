@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+project.ext {
+    annotation = "1.2"
+    appcompat = "26.1.0"
+    arch = "1.0.0-alpha9"
+    constraintLayout = "1.0.0-beta4"
+    glide = "3.7.0"
+    glideAnnotation = "4.1.1"
+    recyclerview = "26.1.0"
+    retrofit = "2.0.2"
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "rdzero.com.bakingit"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:$project.appcompat"
+    compile "com.android.support.constraint:constraint-layout:$project.constraintLayout"
+    compile "android.arch.lifecycle:runtime:$project.arch"
+    compile "android.arch.lifecycle:extensions:$project.arch"
+    compile "com.github.bumptech.glide:glide:$project.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.glideAnnotation"
+    compile "com.squareup.retrofit2:retrofit:$project.retrofit"
+    compile "com.squareup.retrofit2:converter-gson:$project.retrofit"
+    compile "com.android.support:recyclerview-v7:$project.recyclerview"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.arch"
+    compile "javax.annotation:javax.annotation-api:$project.annotation"
+    testCompile 'junit:junit:4.12'
+}
