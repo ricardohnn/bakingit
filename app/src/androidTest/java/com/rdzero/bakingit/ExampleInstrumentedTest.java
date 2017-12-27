@@ -1,4 +1,4 @@
-package rdzero.com.bakingit;
+package com.rdzero.bakingit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

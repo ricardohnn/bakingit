@@ -7,6 +7,8 @@ project.ext {
     constraintLayout = "1.0.0-beta4"
     glide = "3.7.0"
     glideAnnotation = "4.1.1"
+    icepick = "3.2.0"
+    parceler = "1.1.6"
     recyclerview = "26.1.0"
     retrofit = "2.0.2"
 }
@@ -15,7 +17,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "rdzero.com.bakingit"
+        applicationId "com.rdzero.bakingit"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
@@ -50,5 +52,9 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$project.recyclerview"
     annotationProcessor "android.arch.lifecycle:compiler:$project.arch"
     compile "javax.annotation:javax.annotation-api:$project.annotation"
+    compile "frankiesardo:icepick:$project.icepick"
+    provided "frankiesardo:icepick-processor:$project.icepick"
+    compile "org.parceler:parceler-api:$project.parceler"
+    annotationProcessor "org.parceler:parceler:$project.parceler"
     testCompile 'junit:junit:4.12'
 }

@@ -1,11 +1,21 @@
-package rdzero.com.bakingit.service.model;
+package com.rdzero.bakingit.service.model;
 
-import java.util.List;
-import javax.annotation.Generated;
+import android.os.Bundle;
+
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+import org.parceler.Parcels;
+
+import java.util.List;
+
+import javax.annotation.Generated;
+
+import icepick.Bundler;
+
+@Parcel
 @Generated("com.robohorse.robopojogenerator")
-public class ServerResponse{
+public class ServerResponse implements Bundler<ServerResponse>{
 
 	@SerializedName("image")
 	private String image;
@@ -25,7 +35,10 @@ public class ServerResponse{
 	@SerializedName("steps")
 	private List<StepsItem> steps;
 
-	public void setImage(String image){
+    public ServerResponse() {
+    }
+
+    public void setImage(String image){
 		this.image = image;
 	}
 
@@ -84,5 +97,15 @@ public class ServerResponse{
 			",id = '" + id + '\'' + 
 			",steps = '" + steps + '\'' + 
 			"}";
-		}
+	}
+
+    @Override
+    public void put(String key, ServerResponse serverResponse, Bundle bundle) {
+        bundle.putParcelable(key, Parcels.wrap(serverResponse));
+    }
+
+    @Override
+    public ServerResponse get(String key, Bundle bundle) {
+        return Parcels.unwrap(bundle.getParcelable(key));
+    }
 }

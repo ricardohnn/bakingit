@@ -1,4 +1,4 @@
-package rdzero.com.bakingit;
+package com.rdzero.bakingit;
 
 import org.junit.Test;
 

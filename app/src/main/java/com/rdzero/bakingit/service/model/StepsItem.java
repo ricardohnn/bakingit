@@ -1,27 +1,39 @@
-package rdzero.com.bakingit.service.model;
+package com.rdzero.bakingit.service.model;
 
-import javax.annotation.Generated;
+import android.os.Bundle;
+
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+import org.parceler.Parcels;
+
+import javax.annotation.Generated;
+
+import icepick.Bundler;
+
+@Parcel
 @Generated("com.robohorse.robopojogenerator")
-public class StepsItem{
+public class StepsItem implements Bundler<StepsItem>{
 
 	@SerializedName("videoURL")
-	private String videoURL;
+	String videoURL;
 
 	@SerializedName("description")
-	private String description;
+	String description;
 
 	@SerializedName("id")
-	private int id;
+	int id;
 
 	@SerializedName("shortDescription")
-	private String shortDescription;
+    String shortDescription;
 
 	@SerializedName("thumbnailURL")
-	private String thumbnailURL;
+    String thumbnailURL;
 
-	public void setVideoURL(String videoURL){
+    public StepsItem() {
+    }
+
+    public void setVideoURL(String videoURL){
 		this.videoURL = videoURL;
 	}
 
@@ -71,5 +83,15 @@ public class StepsItem{
 			",shortDescription = '" + shortDescription + '\'' + 
 			",thumbnailURL = '" + thumbnailURL + '\'' + 
 			"}";
-		}
+	}
+
+    @Override
+    public void put(String key, StepsItem stepsItem, Bundle bundle) {
+        bundle.putParcelable(key, Parcels.wrap(stepsItem));
+    }
+
+    @Override
+    public StepsItem get(String key, Bundle bundle) {
+        return Parcels.unwrap(bundle.getParcelable(key));
+    }
 }
